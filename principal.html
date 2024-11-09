@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio</title>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#sobre-mi">SOBRE MI</a></li>
+                <li><a href="#videos">VIDEOS</a></li>
+                <li><a href="#fotos">FOTOS</a></li>
+                <li><a href="#publicidad">PUBLICIDAD</a></li>
+                <li><a href="#redes">REDES</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="sobre-mi" class="section fondo-imagen">
+        <div class="content">
+            <h2 class="title">SOBRE MI</h2>
+            <p>Diseñadora Gráfica apasionada por la creatividad...</p>
+            <div class="large-image zoom">IMAGEN</div>
+        </div>
+    </section>
+
+    <section id="videos" class="section">
+        <div class="content">
+            <h2 class="title">VIDEOS</h2>
+            <p>En esta serie de videos, realizados durante...</p>
+            <div class="large-image zoom">IMAGEN</div>
+        </div>
+    </section>
+    <section id="fotos" class="section">
+        <div class="content">
+            <h2 class="title">FOTOS</h2>
+            <div class="carousel">
+                <button class="carousel-button prev">&#10094;</button>
+                <div class="carousel-track-container">
+                    <ul class="carousel-track">
+                        <li class="carousel-slide"><img src="IMG_0213.JPG" alt="Foto 1"></li>
+                        <li class="carousel-slide"><img src="IMG_0151.JPG" alt="Foto 2"></li>
+                        <li class="carousel-slide"><img src="IMG_0230.JPG" alt="Foto 3"></li>
+                        <li class="carousel-slide"><img src="IMG_0213.JPG" alt="Foto 4"></li>
+                        <li class="carousel-slide"><img src="IMG_0413.JPG" alt="Foto 5"></li>
+                        <li class="carousel-slide"><img src="IMG_0213.JPG" alt="Foto 6"></li>
+                        <li class="carousel-slide"><img src="IMG_0213.JPG" alt="Foto 7"></li>
+                        <li class="carousel-slide"><img src="IMG_0213.JPG" alt="Foto 8"></li>
+                        <li class="carousel-slide"><img src="IMG_0213.JPG" alt="Foto 9"></li>
+                        <li class="carousel-slide"><img src="IMG_0213.JPG" alt="Foto 10"></li>
+                    </ul>
+                </div>
+                <button class="carousel-button next">&#10095;</button>
+            </div>
+        </div>
+    </section>
+    
+
+
+    <section id="publicidad" class="section">
+        <div class="content">
+            <h2 class="title">PUBLICIDAD</h2>
+            <div class="image-grid">
+                <div class="image zoom">IMAGEN</div>
+                <div class="image zoom">IMAGEN</div>
+                <div class="image zoom">IMAGEN</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="redes" class="section">
+        <div class="content">
+            <h2 class="title">REDES</h2>
+            <p>Conecta con mis redes sociales...</p>
+        </div>
+    </section>
+    <script>
+        const track = document.querySelector('.carousel-track');
+        const slides = Array.from(track.children);
+        const nextButton = document.querySelector('.next');
+        const prevButton = document.querySelector('.prev');
+        const slideWidth = slides[0].getBoundingClientRect().width;
+    
+        slides.forEach((slide, index) => {
+            slide.style.left = slideWidth * index + 'px';
+        });
+    
+        let currentSlide = 0;
+    
+        nextButton.addEventListener('click', () => {
+            if (currentSlide < slides.length - 1) {
+                currentSlide++;
+            } else {
+                currentSlide = 0;
+            }
+            track.style.transform = `translateX(-${slideWidth * currentSlide}px)`;
+        });
+    
+        prevButton.addEventListener('click', () => {
+            if (currentSlide > 0) {
+                currentSlide--;
+            } else {
+                currentSlide = slides.length - 1;
+            }
+            track.style.transform = `translateX(-${slideWidth * currentSlide}px)`;
+        });
+    </script>
+    
+</body>
+</html>
